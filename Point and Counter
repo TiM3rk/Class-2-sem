@@ -1,0 +1,178 @@
+#include <iostream>
+
+using namespace std;
+
+class Point {
+	int X;
+	int Y;
+
+public:
+	Point(int x);
+
+	Point(int x, int y)
+	{
+		X = x;
+		Y = y;
+	}
+
+	void GetX()
+	{
+		cout << X << endl;
+	}
+	void GetY()
+	{
+		cout << Y << endl;
+	}
+	void SetX(int x)
+	{
+		X = x;
+	}
+	void SetY(int y)
+	{
+		Y = y;
+	}
+
+	void MoveUp(int y)
+	{
+		Y += y;
+	}
+
+	void MoveDown(int y)
+	{
+		Y -= y;
+	}
+
+	void MoveRight(int x)
+	{
+		X += x;
+	}
+
+	void MoveLeft(int x)
+	{
+		X -= x;
+	}
+	void Print()
+	{
+		cout << X << ", " << Y << endl;
+	}
+};
+
+int main()
+{
+	int x = 0;
+	int y = 0;
+	Point P(x, y);
+	P.Print();
+	P.SetX(1);
+	P.GetX();
+	P.MoveUp(3);
+	P.GetY();
+	P.Print();
+}
+
+class Counter 
+{
+	int count;
+	int max;
+	int min;
+	int step;
+
+public:
+
+	Counter();
+
+	Counter(int x, int y, int z, int c)
+	{
+		if (x < max)
+		{
+			count += step;
+		}
+		else if (x < min)
+		{
+			count = min;
+			cout << "Limit Min" << endl;
+		}
+		else
+		{
+			count = x;
+		}
+		min = y;
+		max = z;
+		step = c;
+	}
+
+	Counter(const Counter& a)
+	{
+		count = a.count;
+		max = a.max;
+		min = a.min;
+		step = step;
+	}
+	
+
+	void GoStep()
+	{
+		count += step;
+
+		if (count > max)
+		{
+			count = max;
+			cout << "Limit Max" << endl;
+		}
+	}
+
+	void Go1()
+	{
+		count += 1;
+
+		if (count > max)
+		{
+			count = max;
+			cout << "Limit Max" << endl;
+		}
+	}
+
+	void Reverse()
+	{
+		count = min;
+	}
+
+	void SetMax(int x)
+	{
+		max = x;
+	}
+
+	void SetMin(int x)
+	{
+		min = x;
+	}
+
+	void Print()
+	{
+		cout << "Counter " << count << endl;
+		cout << "Minimum " << min << endl;
+		cout << "Maximum " << max << endl;
+		cout << "Step " << step << endl;
+	}
+};
+
+int main()
+{
+	int x = 5;
+	int y = 1;
+	int z = 8;
+	int c = 2;
+
+	Counter C(x, y, z, c);
+	C.Go1();
+	C.GoStep();
+	C.Print();
+	C.Go1();
+	C.GoStep();
+	C.Print();
+	C.SetMax(10);
+	C.SetMin(0);
+	C.Print();
+	C.Reverse();
+	C.Print();
+}
